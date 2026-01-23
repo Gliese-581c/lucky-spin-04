@@ -16,34 +16,37 @@ namespace LuckySpin.Controllers
         private Repository _repository;
 
         //TODO: Step 2) Include the DIJ repository to be passed as a parameter to the constructor
-        public SpinnerController(Repository repository)
+        public SpinnerController(Repository repository, Player player)
         {
             //TODO: Step 3) Assign the DIJ repository to the instance variable to use in Controller Actions
             _repository = repository;
-        }   
+        }
         /***
          * Index Action (GET and POST)
          **/
         [HttpGet]
-        public IActionResult Index(){ return View();}
+        public IActionResult Index() { return View(); }
         [HttpPost]
         public IActionResult Index(Player player)
         {
-            if(!ModelState.IsValid){ return View(player); } //Server-side validation check of user input against Player Model
-            
+            if (!ModelState.IsValid) { return View(player); } //Server-side validation check of user input against Player Model
+
             //TODO: Add the  player from the [HttpPost] data to the repository
+            _repository.AddPlayer(player);
 
             //TODO: Instead of returning a View, return a Redirect to Spin Action to perform a Spin 
             return RedirectToAction("Spin");
-        } 
+        }
         /***
          * Spin Action (GET only)
-         **/  
-        [HttpGet]      
+         **/
+        [HttpGet]
         public IActionResult Spin()
         {
             // TODO: Create a new Spin instance and add it to the repository
-            
+            Spin s = new Spin();
+            _repository.AddSpin(s);
+
             // TODO: Pass the latest Spin to the Spin View
             return View("Spin");
         }
@@ -53,8 +56,8 @@ namespace LuckySpin.Controllers
         [HttpGet]
         public IActionResult LuckList()
         {
-                //TODO: Pass the repository to the LuckList View
-                return View();
+            //TODO: Pass the repository to the LuckList View
+            return RedirectToAction("LuckList", _repository);
         }
 
     }

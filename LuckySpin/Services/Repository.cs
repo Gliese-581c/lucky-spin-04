@@ -28,5 +28,10 @@ namespace LuckySpin.Services
         {
             _spins.Add(s);
         }
+
+        public void AddPlayer(Player p)
+        {
+            _player = p;
+        }
     }
 }
