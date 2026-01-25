@@ -3,12 +3,13 @@
 @inject LuckySpin.Services.TextTransform TTransform
 <!-- TODO: Inject the Repository Service  -->
 @inject LuckySpin.Services.Repository Repository
-@inject LuckySpin.Models.Player player
+
+@using LuckySpin.Models
 
 @{
     Layout = "_Layout";
     //TODO: Edit the Display logic below to show the Congratulations message only when the player wins
-    string Display = (Model.isWinning(player)) ? "display:block" : "display:none";
+    string Display = (Model.isWinning(/*@Models.Player*/)) ? "display:block" : "display:none";
 }
 <form asp-action="Spin" asp-controller="Spinner">
     <h1>Lucky Spin</h1>
@@ -19,9 +20,9 @@
     <span style="@Display">
         <!-- TODO: Update the message to include the Player's First Name and their Luck value in text format -->
         <h2>Congratulations,<br />You Win with Lucky Number
-            @TTransform.numberToText(player.Luck)</h2>
+            @TTransform.numberToText(/*@Models.Player.Luck*/)</h2>
         <img src="/Images/LuckySpinCoins.jpg" class="animated bounce" alt="Coins" />
     </span>
     <hr />
     <!-- A link to Review the Spins -->
-    <a asp-controller="Spinner" asp-action="LuckList">see your Luck List</a>
+    <form asp-controller="Spinner" asp-action="LuckList">see your Luck List</form>
