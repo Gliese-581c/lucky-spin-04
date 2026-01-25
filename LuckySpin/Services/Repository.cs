@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security;
 using LuckySpin.Models;
 
 namespace LuckySpin.Services
@@ -9,8 +10,9 @@ namespace LuckySpin.Services
         private List<Spin> _spins = new List<Spin>(); //NOTE: This is an in-memory list of spins
         //TODO: Complete the Dependency Injection for the Player object
         private Player _player;
-        public Repository()
+        public Repository(Player player)
         {
+            _player = player;
         }
 
        //Property

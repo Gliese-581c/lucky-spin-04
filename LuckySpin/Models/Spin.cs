@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Security;
 namespace LuckySpin.Models
 {
     public class Spin

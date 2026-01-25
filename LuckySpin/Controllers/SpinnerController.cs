@@ -35,20 +35,20 @@ namespace LuckySpin.Controllers
             _repository.AddPlayer(player);
 
             //TODO: Instead of returning a View, return a Redirect to Spin Action to perform a Spin 
-            return RedirectToAction("Spin");
+            return RedirectToAction("Spin", player);
         }
         /***
          * Spin Action (GET only)
          **/
         [HttpGet]
-        public IActionResult Spin()
+        public IActionResult Spin(Player player)
         {
             // TODO: Create a new Spin instance and add it to the repository
             Spin s = new Spin();
             _repository.AddSpin(s);
 
             // TODO: Pass the latest Spin to the Spin View
-            return View("Spin");
+            return View("Spin", s);
         }
         /***
          * ListSpins Action (GET only)

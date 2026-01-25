@@ -9,6 +9,7 @@ builder.Services.AddTransient<LuckySpin.Services.TextTransform>();
 //TODO: Do Step 0) Here for both the Repository and Player classes as Singleton services
 
 builder.Services.AddSingleton<LuckySpin.Services.Repository>();
+builder.Services.AddSingleton<LuckySpin.Models.Spin>();
 builder.Services.AddSingleton<LuckySpin.Models.Player>();
 
 
