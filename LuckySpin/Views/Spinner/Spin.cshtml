@@ -9,7 +9,7 @@
 @{
     Layout = "_Layout";
     //TODO: Edit the Display logic below to show the Congratulations message only when the player wins
-    string Display = (Model.isWinning(/*@Models.Player*/)) ? "display:block" : "display:none";
+    string Display = (Model.isWinning(@Repository.Player)) ? "display:block" : "display:none";
 }
 <form asp-action="Spin" asp-controller="Spinner">
     <h1>Lucky Spin</h1>
@@ -20,7 +20,7 @@
     <span style="@Display">
         <!-- TODO: Update the message to include the Player's First Name and their Luck value in text format -->
         <h2>Congratulations,<br />You Win with Lucky Number
-            @TTransform.numberToText(/*@Models.Player.Luck*/)</h2>
+            @TTransform.numberToText(Repository.Player.Luck)</h2>
         <img src="/Images/LuckySpinCoins.jpg" class="animated bounce" alt="Coins" />
     </span>
     <hr />
