@@ -55,7 +55,7 @@ namespace LuckySpin.Controllers
          * ListSpins Action (GET only)
          **/
         [HttpGet]
-        public IActionResult ListSpins()
+        public IActionResult LuckList(Repository _repository)
         {
             //TODO: Pass the repository to the LuckList View
             return RedirectToAction("LuckList", _repository);
