@@ -50,16 +50,16 @@ namespace LuckySpin.Controllers
             // TODO: Pass the latest Spin to the Spin View
             return View("Spin", s);
         }
+
         /***
          * ListSpins Action (GET only)
          **/
         [HttpGet]
-        public IActionResult LuckList()
+        public IActionResult ListSpins()
         {
             //TODO: Pass the repository to the LuckList View
             return RedirectToAction("LuckList", _repository);
         }
-
     }
 }
 
